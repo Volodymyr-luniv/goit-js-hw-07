@@ -13,6 +13,8 @@ const boxes = document.getElementById("boxes");
 createBtn.addEventListener("click", createBoxes);
 destroyBtn.addEventListener("click", destroyBoxes);
 
+const boxesElement = document.createDocumentFragment();
+
 function createBoxes() {
 	const amount = parseInt(input.value, 10);
 
@@ -28,8 +30,10 @@ function createBoxes() {
 		box.style.width = `${30 + i * 10}px`;
 		box.style.height = `${30 + i * 10}px`;
 		box.style.backgroundColor = getRandomHexColor();
-		boxes.appendChild(box);
+		boxesElement.appendChild(box);
 	}
+
+	boxes.appendChild(boxesElement);
 
 	input.value = "";
 }
